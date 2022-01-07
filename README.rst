@@ -101,6 +101,74 @@ Following are the columns of the data
 """""""""""""""""""""""""""""""""""""
 ``Date, Open, High, Low, Close, Volume, Market Cap``
 
+------
+=====================
+Additions by Belgareth
+=====================
+
+To get all time historical data of a cryptocurrency from a range of dates (From DD-MM-YY to DD-MM-YY)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: python
+    
+    from cryptocmd import CmcScraper
+
+    currency = input("enter currency: ") #eg.. ICX
+    date_from = input("enter begining date: ") #(DD-MM-YYYY) or left blank to get all dates
+    date_to = input ("enter end date: ")  #(DD-MM-YYYY) or can be left blank to get all dates
+
+    # initialise scraper with time interval
+
+    if date_from and date_to:
+        scraper = CmcScraper(currency, date_from, date_to)
+    else:
+        scraper = CmcScraper(currency)
+
+    # get raw data as list of list
+    headers, data = scraper.get_data()
+
+    # get data in a json format
+    json_data = scraper.get_data("json")
+
+    # export the data to csv
+    scraper.export("csv")
+
+    # get dataframe for the data
+    df = scraper.get_dataframe()
+
+Output file is a CSV
+
+To get all time historical data of Multiple cryptocurrency from a range of dates (From DD-MM-YY to DD-MM-YY)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: python
+
+    from cryptocmd import CmcScraper
+    currency_n = input("enter currency: ") #must be multiple coins eg. BTC ICX (as many coins as you like)
+    date_from = input("enter begining date: ") #Can be left blank to get all ranges (DD-MM-YYYY)
+    date_to = input ("enter end date: ") #Can be left blank to get all ranges (DD-MM-YYYY)
+
+    for currency in currency_n.split(" "):
+        # initialise scraper with time interval
+
+        if date_from and date_to:
+            scraper = CmcScraper(currency, date_from, date_to)
+        else:
+            scraper = CmcScraper(currency)
+
+        headers, data = scraper.get_data()
+
+        # get data in a json format
+        json_data = scraper.get_data("json")
+
+        # export the data to csv
+        scraper.export("csv")
+
+        # get dataframe for the data
+        df = scraper.get_dataframe()
+    
+Output: Each currency as its own CSV file.
+
 
 Acknowledgements
 ----------------

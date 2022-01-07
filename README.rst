@@ -1,5 +1,3 @@
-.. -*-restructuredtext-*-
-
 cryptoCMD: cryptoCurrency Market Data
 ======================================
 

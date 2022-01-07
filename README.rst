@@ -101,7 +101,6 @@ Following are the columns of the data
 """""""""""""""""""""""""""""""""""""
 ``Date, Open, High, Low, Close, Volume, Market Cap``
 
-------
 =====================
 Additions by Belgareth
 =====================

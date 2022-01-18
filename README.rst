@@ -1,6 +1,6 @@
 .. -*-restructuredtext-*-
 
-cryptoCMD: cryptoCurrency Market Data (added scripts)
+cryptoCMD: cryptoCurrency Market Data (added functions)
 ======================================
 
 .. image:: https://img.shields.io/pypi/v/cryptoCMD.svg

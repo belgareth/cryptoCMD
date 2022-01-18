@@ -29,7 +29,8 @@ cryptoCMD: cryptoCurrency Market Data (added scripts)
 
 Cryptocurrency historical market price data scraper written in Python.
 
-
+Note: This is a fork of the orignal repo. I wanted one that could do Multiples coins and specific dates. So i added on to this. 
+-------------------------------------------------------------------------------------------------------------------------------
 Installation
 ------------
 

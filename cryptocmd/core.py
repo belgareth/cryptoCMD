@@ -31,6 +31,7 @@ class CmcScraper(object):
         end_date=None,
         all_time=False,
         order_ascending=False,
+        id_number=None,
     ):
         """
         :param coin_code: coin code of cryptocurrency e.g. btc
@@ -38,6 +39,7 @@ class CmcScraper(object):
         :param end_date: date to which scrape the data (in the format of dd-mm-yyyy)
         :param all_time: 'True' if need data of all time for respective cryptocurrency
         :param order_ascending: data ordered by 'Date' in ascending order (i.e. oldest first).
+        :param id_number: id number for the a cryptocurrency on the coinmarketcap.com. Will override coin_code
 
         """
 
@@ -48,6 +50,8 @@ class CmcScraper(object):
         self.order_ascending = order_ascending
         self.headers = ["Date", "Open", "High", "Low", "Close", "Volume", "Market Cap"]
         self.rows = []
+        self.id_number = id_number
+       
 
         # enable all_time download if start_time or end_time is not given
         if not (self.start_date and self.end_date):
@@ -60,8 +64,8 @@ class CmcScraper(object):
 
     def __repr__(self):
         return (
-            "<CmcScraper coin_code:{}, start_date:{}, end_date:{}, all_time:{}>".format(
-                self.coin_code, self.start_date, self.end_date, self.all_time
+            "<CmcScraper coin_code:{}, start_date:{}, end_date:{}, all_time:{}, id_number:{}>".format(
+                self.coin_code, self.start_date, self.end_date, self.all_time, self.id_number
             )
         )
 
@@ -80,7 +84,7 @@ class CmcScraper(object):
         if self.all_time:
             self.start_date, self.end_date = None, None
 
-        coin_data = download_coin_data(self.coin_code, self.start_date, self.end_date)
+        coin_data = download_coin_data(self.coin_code, self.start_date, self.end_date, self.id_number)
 
         for _row in coin_data["data"]["quotes"]:
 
